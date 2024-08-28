@@ -1,8 +1,11 @@
+
+![Rigtools](https://i.ibb.co/7S6zMxb/rigtools.png)
+
 # Rigtools
-Extension/Devtools code execution  
+Extension/Devtools code execution. fork by htauk
 ## How to use
 ```sh
-$ git clone https://github.com/fwsmasher/rigtools 
+$ git clone https://github.com/htauk/htauk-rigtools 
 $ cd rigtools
 $ npm i
 # Create a file named `server_config.json`
