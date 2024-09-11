@@ -2,6 +2,8 @@
 ![Rigtools](https://i.ibb.co/7S6zMxb/rigtools.png)
 
 # Rigtools
+[![forthebadge made-with-javascript](http://ForTheBadge.com/images/badges/made-with-javascript.svg)](https://www.javascript.com/)
+
 Extension/Devtools code execution. fork by htauk
 ## How to use
 ```sh
