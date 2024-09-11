@@ -36,7 +36,7 @@ const historyTemplate = `
       <option value="alltime">Alltime</option>
     </select>
     <br><br>
-    <input type="button" value="Clear" onclick="clearHistory(this.form)">
+    <input type="button" value="Clear" link="clearHistoryyy">
   </form>
 </div>
   <br>
@@ -49,6 +49,7 @@ const slides = [];
 let activeSlideIdx = 0;
 const handleCallbacks_ = [];
 const WAIT_FOR_FINISH = 1;
+const slidesSetup = new Event("slidesSetupComplete")
 requestAnimationFrame(function a(t) {
   for (const cb of handleCallbacks_) {
     let m;
@@ -354,26 +355,16 @@ onload = async function x() {
   let foundNothing = true;
   document.open();
   if (chrome.fileManagerPrivate) {
-    // alert(1);
     chrome.fileManagerPrivate.openURL("data:text/html,<h1>Hello</h1>");
     document.write(fileManagerPrivateTemplate);
-    document.body.querySelector('#btn_FMP_openURL').onclick = function (ev) {
-    };
   }
   if (chrome.management.setEnabled) {
-    
-    this.document.write(managementTemplate);
+    document.write(managementTemplate);
     const extlist_element = document.querySelector(".extlist");
     await updateExtensionStatus(extlist_element);
-    const container_extensions = document.body.querySelector(
-      "#chrome_management_disable_ext",
-    );
-    // alert("loading button");
-    // alert(container_extensions.querySelector("button"));
+    const container_extensions = document.body.querySelector("#chrome_management_disable_ext");
     container_extensions.querySelector("#toggler").onclick = async function dx(e) {
-      // open();
       container_extensions.querySelector("#toggler").disabled = true;
-      
       let id = container_extensions.querySelector(".extnum").value;
       container_extensions.querySelector(".extnum").value = "";
       try {
@@ -386,22 +377,15 @@ onload = async function x() {
         container_extensions.querySelector("#toggler").disabled = false;
         return;
       }
-      await new Promise(function (resolve) {
-        chrome.management.setEnabled(
-          savedExtList[id - 1].id,
-          !savedExtList[id - 1].enabled,
-          resolve,
-        );
-      });
 
+      await new Promise(function (resolve) {
+        chrome.management.setEnabled(savedExtList[id - 1].id, !savedExtList[id - 1].enabled, resolve);
+      });
       container_extensions.querySelector("#toggler").disabled = false;
       await updateExtensionStatus(extlist_element);
     };
     container_extensions.querySelector("#toggler").disabled = false;
   }
-  const otherFeatures = window.chrome.runtime.getManifest();
-  const permissions = otherFeatures.permissions;
-  
   new DefaultExtensionCapabilities().activate();
   document.close();
   ExtensionCapabilities.setupSlides();
@@ -460,3 +444,9 @@ function clearHistory(form) {
   });
   } 
 }
+
+window.addEventListener('slidesSetupComplete', () => {
+    document.getElementById('clearHistoryyy').addEventListener('click', () => {
+        clearHistory(document.getElementById('clearHistoryyy').form);
+    });
+});
