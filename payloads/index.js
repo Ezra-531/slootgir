@@ -13,8 +13,8 @@ const managementTemplate = `
 <img src="https://raw.githubusercontent.com/T3M1N4L/T3M1N4L/main/images/XOsX.gif" alt="Rigtools Logo" class="logo"/>
 <h1> chrome.management Disable Extensions </h1>
   </div>
-<p class ="description">this funny was granted by the members of silly goober money gang</p>
-<p class ="description">we love casting fun times</p>
+<p class ="description">this funny was granted by a silly billy goober</p>
+<p class ="description">"ooga booga" - Jonathan Osorio 2024</p>
 <br/>
 <button id="current-extension">Disable injected extension</button>
 <br/><br/>
@@ -135,14 +135,14 @@ class DefaultExtensionCapabilities {
 </div>
     <h2>Evaluate code</h1>
     <div class="container">
-      <textarea id="code" placeholder="Enter JavaScript to inject"></textarea>
+      <textarea id="code" placeholder=" Enter JavaScript to inject"></textarea>
     </div>
     <button id="code-run">Run</button>
     <div id="code-output"></div>
     
   </div>
   <div id="extension_tabs_default">
-    <button id="tabreload"> Refresh Tabs</button>
+  <button id="tabreload">Refresh Tabs</button>
     <ul>
     
     </ul>
@@ -528,7 +528,8 @@ const htmlStyle = `
       }
       
       .tablist-item img {
-        max-width: 32px;
+        max-width: 25px;
+        margin-right: 10px;
       }
 
       .tablist-item span {
@@ -599,7 +600,7 @@ const htmlStyle = `
         min-height: 50px;
         height: 200px;
         resize: both;
-        border: 1px solid #9aa0a6;
+        border: 1px solid #6f08ff;
         border-radius: 5px;
         font-family: Consolas;
       }
@@ -612,6 +613,12 @@ const htmlStyle = `
       input[type='checkbox'] {
         accent-color: #6f08ff !important;
     }
+    input[id='TabURLInput'] {
+      background-color: #0a0a0a !important;
+      border-color: #6f08ff !important;
+      border-style: solid;
+      border-radius: 3px;
+  }
     </style>
   `;
 
