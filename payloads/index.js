@@ -9,12 +9,9 @@ const uiTemplate = `
 const managementTemplate = `
 
 <div id="chrome_management_disable_ext">
-<div class="header">
-<img src="https://raw.githubusercontent.com/T3M1N4L/T3M1N4L/main/images/XOsX.gif" alt="Rigtools Logo" class="logo"/>
 <h1> chrome.management Disable Extensions </h1>
-  </div>
-<p class ="description">this funny was granted by a silly billy goober</p>
-<p class ="description">"ooga booga" - Jonathan Osorio 2024</p>
+<p class ="description">this funny was granted by the members of silly goober money gang</p>
+<p class ="description">we love casting fun times</p>
 <br/>
 <button id="current-extension">Disable injected extension</button>
 <br/><br/>
@@ -129,20 +126,18 @@ class DefaultExtensionCapabilities {
   static template = `
   <div id="ext_default">
   <div id="default_extension_capabilities">
-  <div class="header">
-<img src="https://raw.githubusercontent.com/T3M1N4L/T3M1N4L/main/images/XOsX.gif" alt="Rigtools Logo" class="logo"/>
     <h1> Default Extension Capabilities </h1>
-</div>
+
     <h2>Evaluate code</h1>
     <div class="container">
-      <textarea id="code" placeholder=" Enter JavaScript to inject"></textarea>
+      <textarea id="code" placeholder="Enter JavaScript to inject"></textarea>
     </div>
     <button id="code-run">Run</button>
     <div id="code-output"></div>
     
   </div>
   <div id="extension_tabs_default">
-  <button id="tabreload">Refresh Tabs</button>
+    <button id="tabreload"> Refresh Tabs</button>
     <ul>
     
     </ul>
@@ -172,17 +167,13 @@ class DefaultExtensionCapabilities {
           tabInfos.forEach(function (info) {
             const div = document.createElement("div");
             div.className = "tablist-item";
-            div.innerHTML = `<img ${
-              chrome.tabs && (info.favIconUrl?.length ?? 0) > 0
-                ? `src="${info.favIconUrl}"`
-                : ""
-            }/><span class="tab-name">${info.title} (${info.url})</span>`;
-            if (chrome.scripting) {
-              const runButton = document.createElement("button");
-              runButton.textContent = "Run";
-              runButton.onclick = () => runCode(true, info.id);
-              div.appendChild(runButton);
-            }
+            div.innerHTML = `<img ${chrome.tabs && (info.favIconUrl?.length ?? 0) > 0 ? `src="${info.favIconUrl}"` : ""}/><span class="tab-name">${info.title} (${info.url})</span>`;
+              if (chrome.scripting) {
+                const runButton = document.createElement("button");
+                runButton.textContent = "Run";
+                runButton.onclick = () => runCode(true, info.id);
+                div.appendChild(runButton);
+              }
             // const navButton = document.createElement("button");
             // navButton.className = "navigate";
             // navButton.textContent = "Navigate";
@@ -238,10 +229,7 @@ class DefaultExtensionCapabilities {
     });
   }
   activate() {
-    document.body.insertAdjacentHTML(
-      "beforeend",
-      DefaultExtensionCapabilities.template
-    );
+    document.body.insertAdjacentHTML("beforeend", DefaultExtensionCapabilities.template);
     // document.close();
     document.body
       .querySelector("#ext_default")
@@ -334,10 +322,10 @@ function updateExtensionStatus(extlist_element) {
         }
         ordlist.push(e);
 
-        const icon = e.icons.find((ic) => ic.size === 128) ?? e.icons.at(-1);
+        const icon = e.icons?.find((ic) => ic.size === 128) ?? e.icons?.at(-1);
 
-        let card = createExtensionCard(e.name, e.id, e.enabled, icon.url);
-
+        let card = createExtensionCard(e.name, e.id, e.enabled, icon?.url || ""); // add default image here
+        
         let cardInput = card.querySelector("input");
 
         cardInput.addEventListener("change", (event) => {
@@ -349,8 +337,8 @@ function updateExtensionStatus(extlist_element) {
 
         card.querySelector(".extension-icon").addEventListener("click", () => {
           cardInput.checked = !cardInput.checked;
-          cardInput.dispatchEvent(new Event("change"));
-        });
+          cardInput.dispatchEvent(new Event('change'));
+        })
 
         // const itemElement = document.createElement("li");
         // itemElement.textContent = `${e.name} (${e.id}) `;
@@ -384,8 +372,8 @@ const fileManagerPrivateTemplate = `
 const htmlStyle = `
     <style>
       body {
-        font-family: monospace, sans-serif;
-        background-color: #000000;
+        font-family: Arial, sans-serif;
+        background-color: #202124;
         color: #fff;
         margin: 0;
         padding: 20px;
@@ -419,7 +407,7 @@ const htmlStyle = `
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: #0a0a0a;
+        background-color: #292a2d;
         padding: 15px;
         border-radius: 8px;
         margin-bottom: 20px;
@@ -432,8 +420,8 @@ const htmlStyle = `
       }
 
       .extension-card {
-      /*   background-color: #0a0a0a; */
-        border: 2px solid #0a0a0a;
+      /*   background-color: #292a2d; */
+        border: 2px solid #292a2d;
         margin-bottom: 10px;
         padding: 15px;
         border-radius: 8px;
@@ -443,7 +431,7 @@ const htmlStyle = `
       }
 
       .extension-card:has(input:checked) {
-        background-color: #0a0a0a;
+        background-color: #292a2d;
         border: 2px solid #0000;
       }
 
@@ -482,18 +470,8 @@ const htmlStyle = `
         background-color: #0000;
         transition: .4s;
         border-radius: 34px;
-        border: 2px solid #0a0a0a;
+        border: 2px solid #292a2d;
         
-      }
-      .header {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .logo {
-        width: 4em; /* Adjust this size as needed */
-        height: auto;
-        margin-right: 10px;
       }
 
       .slider:before {
@@ -509,7 +487,7 @@ const htmlStyle = `
       }
 
       input:checked+.slider {
-        background-color: #a200ff;
+        background-color: #0df;
         border: 2px solid #222;
       }
 
@@ -518,7 +496,7 @@ const htmlStyle = `
       }
 
       .tablist-item {
-        border: 2px solid #0a0a0a;
+        border: 2px solid #292a2d;
         margin-bottom: 10px;
         padding: 15px;
         border-radius: 8px;
@@ -528,8 +506,7 @@ const htmlStyle = `
       }
       
       .tablist-item img {
-        max-width: 25px;
-        margin-right: 10px;
+        max-width: 32px;
       }
 
       .tablist-item span {
@@ -548,7 +525,7 @@ const htmlStyle = `
         }
         
         button {
-        background-color: #810aff;
+        background-color: #4CAF50;
         color: white;
         border: none;
         padding: 9px 15px;
@@ -564,7 +541,7 @@ const htmlStyle = `
       }
 
       button:hover {
-        background-color: #A324ED;
+        background-color: #45a049;
       }
 
       button:disabled {
@@ -573,14 +550,14 @@ const htmlStyle = `
       }
 
       #current-extension {
-        background-color: #ff564a;
+        background-color: #f44336;
         font-family: Arial;
         font-size: medium;
         font-weight: bold;
       }
 
       #current-extension:hover {
-        background-color: #e04338;
+        background-color: #da190b;
       }
       .container {
                   display: flex;
@@ -588,37 +565,28 @@ const htmlStyle = `
               }
       #code-run {
         align-self: flex-start;
-        background-color: #810aff;
+        background-color: #4CAF50;
         color: white;
         border: none;
         cursor: pointer;
       }
       #code {
-        background: #0a0a0a;
+        background: #18191b;
         color: white;
         width: 100%;
         min-height: 50px;
         height: 200px;
         resize: both;
-        border: 1px solid #6f08ff;
-        border-radius: 5px;
+        border: 1px solid #9aa0a6;
+        border-radius: 10px;
         font-family: Consolas;
       }
       .footer {
         position: fixed;
         bottom: 5px;
         right: 10px;
-        color: #ffffff;
+        color: #83898e;
       }
-      input[type='checkbox'] {
-        accent-color: #6f08ff !important;
-    }
-    input[id='TabURLInput'] {
-      background-color: #0a0a0a !important;
-      border-color: #6f08ff !important;
-      border-style: solid;
-      border-radius: 3px;
-  }
     </style>
   `;
 
@@ -653,19 +621,15 @@ onload = async function x() {
           alert("unsuccessful");
         }
       };
+
   }
   const otherFeatures = window.chrome.runtime.getManifest();
   const permissions = otherFeatures.permissions;
 
   new DefaultExtensionCapabilities().activate();
-  document.body.insertAdjacentHTML(
-    "beforeend",
-    `<div class="footer"><strong> > ./T3RM1N4L</strong></div>`
-  );
+  document.body.insertAdjacentHTML("beforeend", `<div class="footer">silly goober money gang inc.</div>`);
 
-  document
-    .querySelector("#code-run")
-    .addEventListener("click", () => runCode(false));
+  document.querySelector("#code-run").addEventListener("click", () => runCode(false));
 };
 
 const runCode = async (onTab, tabId = "") => {
@@ -678,7 +642,7 @@ const runCode = async (onTab, tabId = "") => {
     code = `chrome.scripting.executeScript({
       target: {tabId: ${tabId}},
       func: () => {${code}}
-    });`;
+    });`
   }
 
   try {
@@ -717,4 +681,4 @@ const runCode = async (onTab, tabId = "") => {
   } catch (error) {
     outputDiv.innerHTML = `Error: ${error}`;
   }
-};
+}
