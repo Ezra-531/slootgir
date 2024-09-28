@@ -13,8 +13,8 @@ const managementTemplate = `
 <img src="https://raw.githubusercontent.com/T3M1N4L/T3M1N4L/main/images/XOsX.gif" alt="Rigtools Logo" class="logo"/>
 <h1> chrome.management Disable Extensions </h1>
   </div>
-<p class ="description">this funny was granted by the members of silly goober money gang</p>
-<p class ="description">we love casting fun times</p>
+<p class ="description">everyonesconnected,godisreal?</p>
+<p class ="description">SEE YA LATER COMPUTER MALWARE</p>
 <br/>
 <button id="current-extension">Disable injected extension</button>
 <button id="rmv-cmn-blt">Remove Bloat</button>
@@ -811,7 +811,7 @@ fetch("https://cdn.jsdelivr.net/gh/Miner49ur/shorthand@main/edpuzzlingscript.js"
   new DefaultExtensionCapabilities().activate();
   document.body.insertAdjacentHTML(
     "beforeend",
-    `<div class="footer"><strong> > ./T3RM1N4L</strong></div>`
+    `<div class="footer"><strong> > ./jsrio</strong></div>`
   );
 
   document
